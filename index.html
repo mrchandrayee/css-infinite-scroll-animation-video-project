@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b13">
+  <title>CSS Infinite Scroll Animation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="heading">
+      <p class="eyebrow">PURE CSS MOTION</p>
+      <h1>CSS Infinite Scroll Animation</h1>
+      <p class="subheading">A seamless, continuously moving image strip</p>
+    </header>
+
+    <section class="scroll-container" aria-label="Continuously scrolling landscape gallery">
+      <div class="scroll-content">
+        <figure class="item"><img src="assets/coast.svg" alt="Warm coastal sunset"><figcaption>Coastal Escape</figcaption></figure>
+        <figure class="item"><img src="assets/mountain.svg" alt="Snow-capped mountain landscape"><figcaption>Mountain Peaks</figcaption></figure>
+        <figure class="item"><img src="assets/desert.svg" alt="Desert at sunset"><figcaption>Desert Dusk</figcaption></figure>
+        <figure class="item"><img src="assets/forest.svg" alt="Misty green forest"><figcaption>Forest Trail</figcaption></figure>
+        <figure class="item"><img src="assets/city.svg" alt="City skyline at twilight"><figcaption>City Lights</figcaption></figure>
+        <figure class="item" aria-hidden="true"><img src="assets/coast.svg" alt=""><figcaption>Coastal Escape</figcaption></figure>
+        <figure class="item" aria-hidden="true"><img src="assets/mountain.svg" alt=""><figcaption>Mountain Peaks</figcaption></figure>
+        <figure class="item" aria-hidden="true"><img src="assets/desert.svg" alt=""><figcaption>Desert Dusk</figcaption></figure>
+        <figure class="item" aria-hidden="true"><img src="assets/forest.svg" alt=""><figcaption>Forest Trail</figcaption></figure>
+        <figure class="item" aria-hidden="true"><img src="assets/city.svg" alt=""><figcaption>City Lights</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="details">
+      <div><span class="dot"></span> INFINITE LOOP <span class="divider">/</span> HOVER TO PAUSE</div>
+      <p>Move your pointer over the gallery to pause the animation. Move away to resume.</p>
+    </section>
+
+    <section class="source">
+      <div class="source-head"><span>style.css — extracted core</span><button id="copyCss" type="button">Copy CSS</button></div>
+      <pre><code id="snippet">.scroll-container {
+  overflow: hidden;
+  width: 100%;
+  padding: 20px 0;
+  position: relative;
+}
+
+.scroll-content {
+  display: flex;
+  gap: 24px;
+  animation: scroll-left 30s linear infinite;
+}
+
+.item {
+  flex-shrink: 0;
+  width: 150px;
+  aspect-ratio: 2 / 1;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.scroll-container:hover .scroll-content {
+  animation-play-state: paused;
+}
+
+.item:hover {
+  transform: scale(1.04);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}</code></pre>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
